@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Page Watcher – Settings</title>
+  <link rel="stylesheet" href="popup.css">
+  <style>
+    body { width: auto; max-width: 560px; max-height: none; margin: 40px auto; padding: 0 20px; }
+    h1 { font-size: 22px; display: flex; align-items: center; gap: 10px; }
+    .panel { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+    .panel h2 { margin: 0 0 4px; font-size: 16px; }
+    .panel > p { color: var(--muted); margin: 0 0 12px; }
+    label { display: block; font-weight: 600; margin: 12px 0 4px; }
+    input[type=text], input[type=password] {
+      width: 100%; padding: 9px 11px; border: 1px solid var(--line); border-radius: 8px;
+      font: inherit; background: var(--bg); color: var(--text);
+    }
+    .check-row { display: flex; gap: 8px; align-items: center; font-weight: 600; }
+    ol.steps { color: var(--muted); padding-left: 18px; margin: 8px 0 0; }
+    ol.steps li { margin: 3px 0; }
+    code { background: var(--accent-soft); padding: 1px 5px; border-radius: 4px; }
+    .buttons { display: flex; gap: 8px; margin-top: 16px; }
+    #status { margin-top: 12px; font-weight: 600; min-height: 1.4em; }
+    #status.ok { color: var(--ok); } #status.bad { color: var(--danger); }
+  </style>
+</head>
+<body>
+  <h1><img src="icons/icon48.png" alt="" width="32" height="32"> Page Watcher settings</h1>
+
+  <div class="panel">
+    <h2>Telegram alerts</h2>
+    <p>Get an instant message on your phone when a watched value changes.</p>
+    <label for="token">Bot token</label>
+    <input id="token" type="password" placeholder="123456789:ABC..." autocomplete="off">
+    <label for="chat">Chat ID</label>
+    <input id="chat" type="text" placeholder="e.g. 6032920211 (or a group ID like -100...)">
+    <ol class="steps">
+      <li>Create a bot with <b>@BotFather</b> (<code>/newbot</code>) and paste the token above.</li>
+      <li>Open your new bot in Telegram and press <b>Start</b>.</li>
+      <li>Get your chat ID from <b>@userinfobot</b> and paste it above.</li>
+    </ol>
+  </div>
+
+  <div class="panel">
+    <h2>Desktop notifications</h2>
+    <label class="check-row"><input id="desktop" type="checkbox"> Show a Chrome notification on this computer</label>
+  </div>
+
+  <div class="buttons">
+    <button id="save" class="primary">Save</button>
+    <button id="test">Send test message</button>
+  </div>
+  <div id="status" role="status"></div>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>

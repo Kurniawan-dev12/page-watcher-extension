@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Page Watcher</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <img src="icons/icon48.png" alt="" width="24" height="24">
+      <span>Page Watcher</span>
+    </div>
+    <button id="settings" class="icon-btn" title="Settings" aria-label="Settings">⚙️</button>
+  </header>
+
+  <button id="pick" class="primary wide">🎯 Watch an element on this page</button>
+  <p id="pick-error" class="error" hidden></p>
+  <p id="telegram-hint" class="hint" hidden>
+    Telegram alerts are off. <a href="#" id="open-settings">Connect Telegram</a>
+  </p>
+
+  <section id="list"></section>
+
+  <template id="empty-tpl">
+    <div class="empty">
+      <div class="empty-icon">👀</div>
+      <strong>Nothing watched yet</strong>
+      <p>Open any page with a price, stock status or number, then click the button above and pick the value.</p>
+    </div>
+  </template>
+
+  <template id="card-tpl">
+    <article class="card">
+      <div class="card-top">
+        <div class="titles">
+          <div class="label"></div>
+          <a class="host" target="_blank"></a>
+        </div>
+        <span class="badge"></span>
+      </div>
+      <div class="value"></div>
+      <div class="meta"></div>
+      <div class="err" hidden></div>
+      <details class="history">
+        <summary>History</summary>
+        <ol></ol>
+      </details>
+      <div class="actions">
+        <button class="check">⟳ Check now</button>
+        <button class="toggle"></button>
+        <button class="delete" title="Delete">🗑</button>
+      </div>
+    </article>
+  </template>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
